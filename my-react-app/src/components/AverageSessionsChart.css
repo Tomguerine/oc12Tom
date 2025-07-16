@@ -1,0 +1,43 @@
+.session-container {
+  background: linear-gradient(135deg, #ff0000, #dc0a0a);
+  border-radius: 8px;
+  /* ✅ bords moins ronds */
+  width: 100%;
+  max-width: 300px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.session-title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+}
+
+.session-chart {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+}
+
+.session-tooltip {
+  background: #fff;
+  color: #000;
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.recharts-cartesian-axis-line,
+.recharts-cartesian-axis-tick-line {
+  display: none;
+}
