@@ -38,7 +38,11 @@ export default function UserProfile({ userId: propUserId }) {
         setAverage(avg);
         setPerformance(perf);
       } catch (err) {
-        setError(err.message);
+        setMainData(null);
+        setActivity(null);
+        setAverage(null);
+        setPerformance(null);
+        setError(err.message || 'Service indisponible');
       }
     }
     fetchData();
