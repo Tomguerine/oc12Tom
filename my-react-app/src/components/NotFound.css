@@ -1,0 +1,10 @@
+.not-found {
+  text-align: center;
+  margin-top: 2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.not-found a {
+  color: #ff0101;
+  text-decoration: underline;
+}
