@@ -22,6 +22,7 @@ export default function UserProfile({ userId: propUserId }) {
   const [average, setAverage] = useState(null);
   const [performance, setPerformance] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!userId) return;
@@ -39,8 +40,11 @@ export default function UserProfile({ userId: propUserId }) {
         setPerformance(perf);
       } catch (err) {
         setError(err.message);
+      } finally {
+        setLoading(false);
       }
     }
+    setLoading(true);
     fetchData();
   }, [userId]);
 
@@ -49,6 +53,15 @@ export default function UserProfile({ userId: propUserId }) {
       <div>
         <Header />
         <p>Error: {error}</p>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div>
+        <Header />
+        <p>Chargement…</p>
       </div>
     );
   }
