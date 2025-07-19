@@ -22,6 +22,7 @@ export default function UserProfile({ userId: propUserId }) {
   const [average, setAverage] = useState(null);
   const [performance, setPerformance] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);https://github.com/settings/emails?notice=one_verified_email
 
   useEffect(() => {
     if (!userId) return;
@@ -38,6 +39,9 @@ export default function UserProfile({ userId: propUserId }) {
         setAverage(avg);
         setPerformance(perf);
       } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
         setMainData(null);
         setActivity(null);
         setAverage(null);
@@ -45,6 +49,7 @@ export default function UserProfile({ userId: propUserId }) {
         setError(err.message || 'Service indisponible');
       }
     }
+    setLoading(true);
     fetchData();
   }, [userId]);
 
@@ -53,6 +58,15 @@ export default function UserProfile({ userId: propUserId }) {
       <div>
         <Header />
         <p>Error: {error}</p>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div>
+        <Header />
+        <p>Chargement…</p>
       </div>
     );
   }
