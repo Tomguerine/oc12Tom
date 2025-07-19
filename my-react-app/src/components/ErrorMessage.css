@@ -1,0 +1,14 @@
+.error-message {
+  text-align: center;
+  margin-top: 2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.error-message p {
+  color: #ff0101;
+}
+
+.error-message a {
+  color: #ff0101;
+  text-decoration: underline;
+}
