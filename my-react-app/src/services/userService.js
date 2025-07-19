@@ -1,6 +1,13 @@
 // Base URL for API requests comes from the Vite environment variable
 const API_URL = import.meta.env.VITE_API_URL;
 
+import {
+  UserMainData,
+  UserActivity,
+  UserAverageSessions,
+  UserPerformance,
+} from '../models/userModels.js';
+
 async function request(endpoint, defaultMessage) {
   try {
     const res = await fetch(endpoint);
@@ -18,18 +25,34 @@ async function request(endpoint, defaultMessage) {
   }
 }
 
-export function getUserMainData(id) {
-  return request(`${API_URL}/${id}`, 'Impossible de récupérer les données utilisateur');
+export async function getUserMainData(id) {
+  const data = await request(
+    `${API_URL}/${id}`,
+    'Impossible de récupérer les données utilisateur'
+  );
+  return new UserMainData(data);
 }
 
-export function getUserActivity(id) {
-  return request(`${API_URL}/${id}/activity`, "Impossible de récupérer l'activité utilisateur");
+export async function getUserActivity(id) {
+  const data = await request(
+    `${API_URL}/${id}/activity`,
+    "Impossible de récupérer l'activité utilisateur"
+  );
+  return new UserActivity(data);
 }
 
-export function getUserAverageSessions(id) {
-  return request(`${API_URL}/${id}/average-sessions`, 'Impossible de récupérer les sessions moyennes');
+export async function getUserAverageSessions(id) {
+  const data = await request(
+    `${API_URL}/${id}/average-sessions`,
+    'Impossible de récupérer les sessions moyennes'
+  );
+  return new UserAverageSessions(data);
 }
 
-export function getUserPerformance(id) {
-  return request(`${API_URL}/${id}/performance`, 'Impossible de récupérer la performance');
+export async function getUserPerformance(id) {
+  const data = await request(
+    `${API_URL}/${id}/performance`,
+    'Impossible de récupérer la performance'
+  );
+  return new UserPerformance(data);
 }
