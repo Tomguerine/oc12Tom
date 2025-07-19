@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from './Header.jsx';
+import ErrorMessage from './ErrorMessage.jsx';
 import ActivityChart from './ActivityChart.jsx';
 import AverageSessionsChart from './AverageSessionsChart.jsx';
 import PerformanceRadarChart from './PerformanceRadarChart.jsx';
@@ -22,6 +23,7 @@ export default function UserProfile({ userId: propUserId }) {
   const [average, setAverage] = useState(null);
   const [performance, setPerformance] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!userId) return;
@@ -38,17 +40,24 @@ export default function UserProfile({ userId: propUserId }) {
         setAverage(avg);
         setPerformance(perf);
       } catch (err) {
-        setError(err.message);
+        setError(err.message || 'Service indisponible');
+      } finally {
+        setLoading(false);
       }
     }
+    setLoading(true);
     fetchData();
   }, [userId]);
 
   if (error) {
+    return <ErrorMessage message={error} />;
+  }
+
+  if (loading) {
     return (
       <div>
         <Header />
-        <p>Error: {error}</p>
+        <p>Chargement…</p>
       </div>
     );
   }
