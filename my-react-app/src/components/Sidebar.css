@@ -1,0 +1,46 @@
+.sidebar {
+  width: 100px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 988;
+}
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding-top: 200px;
+}
+
+.sidebar-link {
+  color: #fff;
+  margin: 1rem 0;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.sidebar-copyright {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 12px;
+  color: #fff;
+  margin-bottom: 20px;
+}
