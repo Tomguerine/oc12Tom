@@ -18,6 +18,7 @@ Create a `.env` file in `my-react-app` to configure API access:
 
 ```env
 VITE_API_URL=http://localhost:3000
+VITE_USE_MOCKS=false
 ```
 
 ## Running the development servers
@@ -28,6 +29,9 @@ Start the backend API on `VITE_API_URL` (for example using `npm start` in your b
 cd my-react-app
 npm run dev
 ```
+
+Set `VITE_USE_MOCKS=true` in the `.env` file if you want to work without the
+backend API and use the local mocked data instead.
 
 ## Available scripts
 
