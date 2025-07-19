@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from './Header.jsx';
+import ErrorMessage from './ErrorMessage.jsx';
 import ActivityChart from './ActivityChart.jsx';
 import AverageSessionsChart from './AverageSessionsChart.jsx';
 import PerformanceRadarChart from './PerformanceRadarChart.jsx';
@@ -49,12 +50,7 @@ export default function UserProfile({ userId: propUserId }) {
   }, [userId]);
 
   if (error) {
-    return (
-      <div>
-        <Header />
-        <p>Error: {error}</p>
-      </div>
-    );
+    return <ErrorMessage message={error} />;
   }
 
   if (loading) {
