@@ -42,7 +42,34 @@
   margin: 0;
   padding: 0;
   align-items: center;
-  gap: 200px;
+  gap: 8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .nav-menu {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 1rem 2rem;
+  }
+
+  .nav-menu {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .nav-menu li a {
+    line-height: normal;
+    padding: 0.5rem 0;
+  }
 }
 
 .nav-menu li a {
